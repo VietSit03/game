@@ -96,7 +96,7 @@ int main() {
     }
     else if (g_checkEnd) {
         changePlayer();
-        cout << "Player " << g_player << " is winning!" << endl;
+        cout << "Player " << g_player << " is winner!" << endl;
     }
     system("pause");
     system("cls");
