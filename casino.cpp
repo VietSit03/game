@@ -104,7 +104,7 @@ void start() {
         updateCoin(coin);
         system("cls");
         home();
-        abc();
+        start();
     }
 }
 
