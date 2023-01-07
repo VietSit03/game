@@ -97,7 +97,7 @@ bool checkChoice(int& choice, int& coin) {
     }
 }
 
-void abc() {
+void start() {
     static int choice, coin;
     menu(choice, coin);
     if (checkChoice(choice,coin)) {
@@ -111,6 +111,6 @@ void abc() {
 int main() {
     srand(time(0));
     home();
-    abc();
+    start();
     return 0;
 }
