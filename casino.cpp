@@ -10,6 +10,7 @@ using namespace std;
 int* g_num = new int[3];
 int g_temp = 0;
 int j = 0;
+int g_coinPlayer = 100;
 
 void spin() {
     while (j!=3) {
@@ -20,20 +21,26 @@ void spin() {
             for (int i = j; i < 3; i++) {
                     g_num[i] = rand() % 10;
             }
-            cout << "| " << g_num[0] << " | " << g_num[1] << " | " << g_num[2] << " |" << endl;
+            cout << ".-----------." << endl;    
+            cout << "| " << g_num[0] << " | " << g_num[1] << " | " << g_num[2] << " |_" << endl;
+            cout << "'-----------' |" << endl;
+            cout << "              O" << endl;
             Sleep(300);
             system("cls");
         }
         j++;
     }
-    cout << "| " << g_num[0] << " | " << g_num[1] << " | " << g_num[2] << " |" << endl;
+    cout << ".-----------." << endl;
+    cout << "| " << g_num[0] << " | " << g_num[1] << " | " << g_num[2] << " |_" << endl;
+    cout << "'-----------' |" << endl;
+    cout << "              O" << endl;
     j = 0;
     return ;
 }
 
 void check(int coin) {
     if (g_num[0] == g_num[1] && g_num[2] == g_num[1]) {
-        cout << "Congratulation!!! You won " << coin*50 << "!!!" << endl;
+        cout << "Congratulation!!! You won " << coin*50 << " coin!!!" << endl;
     }
     else if (g_num[0] == g_num[1] || g_num[1] == g_num[2] || g_num[2] == g_num[0]) {
         cout << "So close!" << endl;
@@ -43,29 +50,34 @@ void check(int coin) {
     }
     system("pause");
 }
+
+void home() {
+    cout << ".-----------. O" << endl;
+    cout << "| 8 | 8 | 8 |_|" << endl;
+    cout << "'-----------'" << endl;
+    cout << "Your wallet: " << g_coinPlayer << " coins" << endl;
+}
 int main() {
     srand(time(0));
-    cout << "| 8 | 8 | 8 |" << endl;
+    home();
     int coin, choice;
 loop:
-    cout << "Insert coin: "; cin >> coin;
+    cout << "Insert coin: ";
+    cin >> coin;
+    while (coin > g_coinPlayer) {
+        cout << "Your wallet contains: " << g_coinPlayer << ", insert coin again: ";
+        cin >> coin;
+    }
     cout << "1. Spin." << endl;
     cout << "2. Change coin." << endl;
     cout << "3. Exit." << endl;
-    cout << "Select choice: "; cin >> choice;
-    switch (choice) {
-        case 1:
-            system("cls");
-            spin();
-            break;
-        case 2:
-            goto loop;
-        case 3:
-            return 0;
-    }
+    cout << "Select choice: ";
+selectChoice:
     check(coin);
     system("cls");
-    cout << "| 8 | 8 | 8 |" << endl;
+    cout << ".-----------. O" << endl;
+    cout << "| 8 | 8 | 8 |_|" << endl;
+    cout << "'-----------'" << endl;
     goto loop;
     return 0;
 }
